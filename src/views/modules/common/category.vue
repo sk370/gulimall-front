@@ -57,8 +57,8 @@ export default {
       });
     },
     nodeclick(data, node, component) {
-      // console.log("子组件category的节点被点击", data, node, component);
-      //向父组件发送事件；【父子通信——子组件被点击，给父组件通过事件(tree-node-click)发送数据，】
+      console.log("子组件category的节点被点击", data, node, component);
+      //向父组件发送事件；
       this.$emit("tree-node-click", data, node, component);
     }
   },

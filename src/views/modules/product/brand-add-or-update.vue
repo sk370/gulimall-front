@@ -16,7 +16,7 @@
       </el-form-item>
       <el-form-item label="品牌logo地址" prop="logo">
         <!-- <el-input v-model="dataForm.logo" placeholder="品牌logo地址"></el-input> -->
-        <single-upload v-model="dataForm.logo"></single-upload><!--使用components/upload下的文件上传组件-->
+        <single-upload v-model="dataForm.logo"></single-upload>
       </el-form-item>
       <el-form-item label="介绍" prop="descript">
         <el-input v-model="dataForm.descript" placeholder="介绍"></el-input>
@@ -83,7 +83,7 @@ export default {
               } else if (!/^[a-zA-Z]$/.test(value)) {
                 callback(new Error("首字母必须a-z或者A-Z之间"));
               } else {
-                callback();// 成功的回调
+                callback();
               }
             },
             trigger: "blur"
