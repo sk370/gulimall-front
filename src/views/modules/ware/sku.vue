@@ -78,7 +78,7 @@ export default {
     AddOrUpdate
   },
   activated() {
-    console.log("接收到", this.$route.query.skuId);
+    // console.log("接收到", this.$route.query.skuId);
     if (this.$route.query.skuId) {
       this.dataForm.skuId = this.$route.query.skuId;
     }

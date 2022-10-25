@@ -107,14 +107,14 @@ export default {
         url: this.$http.adornUrl("/product/category/list/tree"),
         method: "get"
       }).then(({ data }) => {
-        console.log("成功获取到菜单数据...", data.data);
+        // console.log("成功获取到菜单数据...", data.data);
         this.menus = data.data;
       });
     },
     batchDelete() {
       let catIds = [];
       let checkedNodes = this.$refs.menuTree.getCheckedNodes();
-      console.log("被选中的元素", checkedNodes);
+      // console.log("被选中的元素", checkedNodes);
       for (let i = 0; i < checkedNodes.length; i++) {
         catIds.push(checkedNodes[i].catId);
       }
@@ -158,7 +158,7 @@ export default {
       });
     },
     handleDrop(draggingNode, dropNode, dropType, ev) {
-      console.log("handleDrop: ", draggingNode, dropNode, dropType);
+      // console.log("handleDrop: ", draggingNode, dropNode, dropType);
       //1、当前节点最新的父节点id
       let pCid = 0;
       let siblings = null;
@@ -197,7 +197,7 @@ export default {
       }
 
       //3、当前拖拽节点的最新层级
-      console.log("updateNodes", this.updateNodes);
+      // console.log("updateNodes", this.updateNodes);
     },
     updateChildNodeLevel(node) {
       if (node.childNodes.length > 0) {
@@ -215,12 +215,12 @@ export default {
       //1、被拖动的当前节点以及所在的父节点总层数不能大于3
 
       //1）、被拖动的当前节点总层数
-      console.log("allowDrop:", draggingNode, dropNode, type);
+      // console.log("allowDrop:", draggingNode, dropNode, type);
       //
       this.countNodeLevel(draggingNode);
       //当前正在拖动的节点+父节点所在的深度不大于3即可
       let deep = Math.abs(this.maxLevel - draggingNode.level) + 1;
-      console.log("深度：", deep);
+      // console.log("深度：", deep);
 
       //   this.maxLevel
       if (type == "inner") {
@@ -244,7 +244,7 @@ export default {
       }
     },
     edit(data) {
-      console.log("要修改的数据", data);
+      // console.log("要修改的数据", data);
       this.dialogType = "edit";
       this.title = "修改分类";
       this.dialogVisible = true;
@@ -255,7 +255,7 @@ export default {
         method: "get"
       }).then(({ data }) => {
         //请求成功
-        console.log("要回显的数据", data);
+        // console.log("要回显的数据", data);
         this.category.name = data.data.name;
         this.category.catId = data.data.catId;
         this.category.icon = data.data.icon;
@@ -273,7 +273,7 @@ export default {
       });
     },
     append(data) {
-      console.log("append", data);
+      // console.log("append", data);
       this.dialogType = "add";
       this.title = "添加分类";
       this.dialogVisible = true;
@@ -317,7 +317,7 @@ export default {
     },
     //添加三级分类
     addCategory() {
-      console.log("提交的三级分类数据", this.category);
+      // console.log("提交的三级分类数据", this.category);
       this.$http({
         url: this.$http.adornUrl("/product/category/save"),
         method: "post",
@@ -361,7 +361,7 @@ export default {
         })
         .catch(() => {});
 
-      console.log("remove", node, data);
+      // console.log("remove", node, data);
     }
   },
   //生命周期 - 创建完成（可以访问当前this实例）

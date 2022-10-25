@@ -85,13 +85,15 @@ export default {
         data.data.forEach(item => {
           this.spuAttrsMap["" + item.attrId] = item;
         });
-        console.log("~~~~", this.spuAttrsMap);
+
+        // console.log("~~~~data", data.data);
+        // console.log("~~~~listforspu", this.spuAttrsMap);
       });
     },
     getQueryParams() {
       this.spuId = this.$route.query.spuId;
       this.catalogId = this.$route.query.catalogId;
-      console.log("----", this.spuId, this.catalogId);
+      // console.log("----", this.spuId, this.catalogId);
     },
     showBaseAttrs() {
       let _this = this;
@@ -109,7 +111,8 @@ export default {
             let v = "";
             if (_this.spuAttrsMap["" + attr.attrId]) {
               v = _this.spuAttrsMap["" + attr.attrId].attrValue.split(";");
-              if (v.length == 1) {
+              //if (v.length == 1) {//当规格参数的值类型为【允许多个值】但是只填了一个值时无法回显
+              if (v.length == 1 && attr.valueType == 0) {
                 v = v[0] + "";
               }
             }
@@ -125,10 +128,13 @@ export default {
           this.dataResp.baseAttrs.push(attrArray);
         });
         this.dataResp.attrGroups = data.data;
+
+        // console.log("~~~~withattr", this.dataResp.attrGroups);
+        // console.log("~~~~withattr", this.dataResp.baseAttrs);
       });
     },
     submitSpuAttrs() {
-      console.log("·····", this.dataResp.baseAttrs);
+      // console.log("·····", this.dataResp.baseAttrs);
       //spu_id  attr_id  attr_name             attr_value             attr_sort  quick_show
       let submitData = [];
       this.dataResp.baseAttrs.forEach(item => {
